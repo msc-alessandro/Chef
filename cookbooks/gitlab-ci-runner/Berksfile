@@ -1,0 +1,4 @@
+source 'https://supermarket.chef.io'
+
+cookbook 'test-gitlab-ci-runner', path: 'test/cookbooks/test-gitlab-ci-runner'
+metadata
