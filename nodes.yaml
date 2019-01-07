@@ -1,0 +1,5 @@
+gitlab-runner:
+  run_list:
+    - recipe[basics]
+    - recipe[firewalld]
+    - recipe[gitlab-ci-runner]
