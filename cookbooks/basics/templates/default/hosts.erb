@@ -1,0 +1,6 @@
+127.0.0.1 localhost
+
+<% node['peers'].each do |hostname, ip| %>
+  <%= "#{ip} #{hostname}" %>
+<% end %>
+
