@@ -54,14 +54,71 @@ gem install rake
 
 Para a execução local, foram preparadas VMs e portanto será necessário baixar e instalar o [Vagrant](https://www.vagrantup.com/downloads.html).
 
+## Adicionando novos ambientes para deploy
 
-## Adicionando nós a stack
+Para adicionar um novo ambiente, crie uma nova pasta dentro do diretório config com o nome do ambiente. Neste diretório, devem existir três arquivos, são eles:
 
+```
+ips.yaml: Contém os ips dos nós que vão receber as configurações
+ssh_config: Contém as configurações para ssh dos nós.
+runners.yaml: Contém as configurações dos runners do gitlab que serão aplicadas nos nós.
+```
 
+## Adicionando nós a um ambiente
+
+Adicione um novo nó no arquivo nodes.yaml.
+
+```
+gitlab-runner:
+  run_list:
+    - role[gitlab-runner]
+```
+
+Adicione o ip do novo nó no arquivo ips.yaml dentro da pasta do ambiente que este novo nó se encontra.
+
+```
+gitlab-runner: 10.0.2.10
+```
+
+Adicione as configurações de SSH no arquivo `ssh_config` dentro da pasta do ambiente em que o nó se encontra.
+
+```
+Host gitlab-runner
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/alessandrocb/Projetos/chef/.vagrant/machines/gitlab-runner/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+```
 
 ## Configuração dos runners
 
+As configurações dos runners ficam no arquivo `config/<ambiente>/runners.yaml`, esse arquivo tem a seguinte configuração:
 
+```
+runners:
+  - description: test-runner-1
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'tZzvXHYxz9LqDRRN4nMv'
+      tag_list: [ 'test1', 'tag' ]
+      executor: 'docker'
+      docker_image: 'node:8'
+      retries: 1
+  - description: test-runner-2
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'tZzvXHYxz9LqDRRN4nMv'
+      tag_list: [ 'test2', 'tag' ]
+      executor: 'docker'
+      docker_image: 'node:8'
+      retries: 1
+
+```
 
 ## Executando e criando runners localmente
 

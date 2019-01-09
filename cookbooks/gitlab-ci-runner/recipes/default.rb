@@ -25,14 +25,10 @@ config_file = "#{$ROOT_DIR}/config/#{$CHAKE_ENV}/%s"
 
 runners_file = config_file % 'runners.yaml'
 runners = YAML.load_file(runners_file)
-puts runners['runners']
-
-task_name = 'Create runner %s'
-
 
 runners['runners'].each do |runner|
 
-  gitlab_ci_runner task_name % runner['description'] do
+  gitlab_ci_runner runner['description'] do
       options({
           registration_token:  runner['options']['registration_token'],
           url: runner['options']['url'],
