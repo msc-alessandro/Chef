@@ -20,10 +20,10 @@ include_recipe "#{cookbook_name}::service"
 
 gitlab_ci_runner 'test runner' do
     options({
-        registration_token: '6ZL4A_UKR4-u1cE4zUtD',
+        registration_token: 'tZzvXHYxz9LqDRRN4nMv',
         url: 'https://gitlab.com/',
         executor: 'docker',
-        :'docker-image' => 'docker:1',
-        :'tag-list' => ['docker-test']
+        :'docker-image' => 'node:8',
+        :'tag-list' => ['node-8', 'testing']
       })
 end
