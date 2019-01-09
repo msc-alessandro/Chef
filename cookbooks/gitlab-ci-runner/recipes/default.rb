@@ -18,12 +18,32 @@ include_recipe "#{cookbook_name}::repository"
 include_recipe "#{cookbook_name}::package"
 include_recipe "#{cookbook_name}::service"
 
-gitlab_ci_runner 'test runner' do
-    options({
-        registration_token: 'tZzvXHYxz9LqDRRN4nMv',
-        url: 'https://gitlab.com/',
-        executor: 'docker',
-        :'docker-image' => 'node:8',
-        :'tag-list' => ['node-8', 'testing']
+$CHAKE_ENV = ENV.fetch('CHAKE_ENV', 'local')
+$ROOT_DIR = File.expand_path('../../../../../.', __FILE__)
+
+config_file = "#{$ROOT_DIR}/config/#{$CHAKE_ENV}/%s"
+
+runners_file = config_file % 'runners.yaml'
+runners = YAML.load_file(runners_file)
+puts runners['runners']
+
+task_name = 'Create runner %s'
+
+
+runners['runners'].each do |runner|
+
+  gitlab_ci_runner task_name % runner['description'] do
+      options({
+          registration_token:  runner['options']['registration_token'],
+          url: runner['options']['url'],
+          executor: runner['options']['executor'],
+          :'docker-image' => runner['options']['docker_image'],
+          :'tag-list' => runner['options']['tag_list']
       })
+  end
+
 end
+
+
+
+
