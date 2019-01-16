@@ -47,12 +47,30 @@ Ruby version >= 0
 O Chake em si é uma gem (Pacote do Ruby) que utiliza o Rake para a execução dos comandos ( *tasks* ). Portanto ambas as gems devem ser instaladas.
 
 ```
+Linux
+
 gem install chake
 
 gem install rake
 ```
-
 Para a execução local, foram preparadas VMs e portanto será necessário baixar e instalar o [Vagrant](https://www.vagrantup.com/downloads.html).
+
+## Dependencias de instalação nos nós alvo.
+
+As máquinas alvo da instalção devem possuir `sudo` instalado além de ferramentas como `wget` e `curl`. Para permitir a instalação no windows é necessário que a máquina possua o gerenciador de pacotes `Chocolatey`. A lista de dependencias dos nós alvo é a seguinte:
+
+```
+Windows:
+	- Chocolatey
+	- sudo
+	- wget
+	- curl
+
+Linux:
+	- sudo
+	- wget
+	- curl
+```
 
 ## Adicionando novos ambientes para deploy
 
@@ -121,6 +139,21 @@ runners:
 ```
 
 ## Executando e criando runners localmente
+Este repositório possui arquivos que permitem a criação de *runners* localmente usando máquinas virtuais para testar a configutação das receitas. O arquivo `Vagrantfile` possui configurações para instanciar uma máquina virtual, para isto é necessário apenas executar o comando `vagrant up` dentro da pasta do projeto. Caso queira convergir as ferramentas na sua máquina, sem fazer questão de isolamento da ferramenta, basta criar uma configuração como a seguinte no arquivo `nodes.yaml`:
 
+```
+local://desktop:
+  run_list:
+    - role[workstation]
+local://laptop:
+  run_list:
+    - role[workstation]
+```
+
+Logo após, será necessário apenas executar o comando para convergir os ambiente.
 
 ## Convergindo os ambientes
+
+O comando para aplicar as receitas nos nós é o `converge`. Para convergir as máquinas o comando é `rake converge:<nó> CHAKE_ENV=<ambiente>`, ao rodar este comando todas as receitas ou roles aplicados ao nó que estão presentes no `nodes.yaml` são aplicados a uma máquina. O usuário pode selecionar qual máquina quer convergir passando a opção de nó no comando, como por exemplo `rake converge:gitlab-runner` ou `rake converge:desktop`, e ao rodar o comando sem a opção de nó, todas as máquinas serão convergidas, ignorando as configurações locais que possuem o prefixo `local://`. A variável `CHAKE_ENV` dita em qual ambiente o converge irá ocorrer, caso essa varável seja ignorada o `chake`  utilizará as configurações presentes em `config/local/`, caso um ambiente seja especificado, como `CHAKE_ENV=ed`, o converge irá ocorrer com as especificações dos arquivos em `config/ed/`.
+
+
