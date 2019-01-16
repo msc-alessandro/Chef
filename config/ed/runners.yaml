@@ -1,0 +1,18 @@
+runners:
+  - description: test-runner-1
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'tZzvXHYxz9LqDRRN4nMv'
+      tag_list: [ 'test1', 'tag' ]
+      executor: 'docker'
+      docker_image: 'node:8'
+      retries: 1
+  - description: test-runner-2
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'tZzvXHYxz9LqDRRN4nMv'
+      tag_list: [ 'test2', 'tag' ]
+      executor: 'docker'
+      docker_image: 'node:8'
+      retries: 1
+
