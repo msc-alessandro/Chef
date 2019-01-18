@@ -1,5 +1,5 @@
 runners:
-  - description: test-runner-1
+  - description: ed-server-runner-1
     options:
       url: 'https://gitlab.com'
       registration_token: 'tZzvXHYxz9LqDRRN4nMv'
@@ -7,7 +7,7 @@ runners:
       executor: 'docker'
       docker_image: 'node:8'
       retries: 1
-  - description: test-runner-2
+  - description: ed-server-runner-2
     options:
       url: 'https://gitlab.com'
       registration_token: 'tZzvXHYxz9LqDRRN4nMv'
