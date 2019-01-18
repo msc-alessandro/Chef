@@ -1,3 +1,7 @@
 gitlab-runner:
   run_list:
     - role[gitlab-runner]
+
+sonarqube-server:
+  run_list:
+    - role[sonarqube-server]
