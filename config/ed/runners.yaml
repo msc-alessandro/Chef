@@ -1,18 +1,58 @@
 runners:
-  - description: ed-server-runner-1
+  - description: ed-server-icatu-runner-1
     options:
       url: 'https://gitlab.com'
-      registration_token: 'tZzvXHYxz9LqDRRN4nMv'
-      tag_list: [ 'test1', 'tag' ]
+      registration_token: 'Tezn5Dipy_Y8aze1o36x'
+      tag_list: [ 'node10', 'icatu', 'runner1' ]
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-icatu-runner-2
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'Tezn5Dipy_Y8aze1o36x'
+      tag_list: [ 'node8', 'icatu', 'runner2' ]
       executor: 'docker'
       docker_image: 'node:8'
       retries: 1
-  - description: ed-server-runner-2
+  - description: ed-server-cug-runner-1
     options:
       url: 'https://gitlab.com'
-      registration_token: 'tZzvXHYxz9LqDRRN4nMv'
-      tag_list: [ 'test2', 'tag' ]
+      registration_token: 'AKYAAyJ2f6d58kyubqzm'
+      tag_list: [ 'node10', 'cug' , 'runner1']
       executor: 'docker'
-      docker_image: 'node:8'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-cug-runner-2
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'AKYAAyJ2f6d58kyubqzm'
+      tag_list: [ 'node10', 'cug', 'runner2' ]
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-cug-runner-3
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'AKYAAyJ2f6d58kyubqzm'
+      tag_list: [ 'node10', 'cug' , 'runner1']
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-cug-runner-4
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'AKYAAyJ2f6d58kyubqzm'
+      tag_list: [ 'node10', 'cug', 'runner2' ]
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-cug-runner-5
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'AKYAAyJ2f6d58kyubqzm'
+      tag_list: [ 'node10', 'cug', 'runner2' ]
+      executor: 'docker'
+      docker_image: 'node:10'
       retries: 1
 

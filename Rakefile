@@ -70,6 +70,28 @@ task :test do
   sh "CHAKE_ENV=#{$CHAKE_ENV} ./test/run_all"
 end
 
+task :export_env do
+  command = "export CHAKE_ENV=#{$CHAKE_ENV}"
+  $nodes.each do |node|
+    puts "###############################################"
+    puts "[#{node.hostname}]: EXECUTING #{command}"
+    puts "This should be easy"
+    puts "###############################################"
+
+    output = IO.popen("ssh -F #{ssh_config_file} #{node.hostname} #{command}")
+    output.each_line do |line|
+      printf "%s: %s\n", node.hostname, line.strip
+    end
+    output.close
+    if $?
+      status = $?.exitstatus
+      if status != 0
+        raise Exception.new(['FAILED with exit status %d' % status].join(': '))
+      end
+    end
+  end
+end
+
 
 if ['local', 'lxc'].include?($CHAKE_ENV)
   @USER = 'vagrant'
