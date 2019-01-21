@@ -25,7 +25,7 @@ end
 remote_file sonarqube_zipfile_destination do
   source sonarqube_zipfile_source
   mode 0644
-  checksum sonarqube_checksum
+  #checksum sonarqube_checksum
 end
 
 package 'unzip'
@@ -68,8 +68,4 @@ end
 service 'sonarqube' do
   supports restart: true, reload: false, status: true
   action [:enable, :start]
-end
-
-sonarqube_plugin 'gitlab' do
-  version '3.0.1'
 end
