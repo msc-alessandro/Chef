@@ -35,12 +35,10 @@ Vagrant.configure("2") do |config|
       override.vm.synced_folder '.', '/vagrant', type: 'rsync', rsync__exclude: '.git/'
       override.vm.network "forwarded_port", guest: 9000, host: 9090, auto_correct: true
       override.vm.provision "file", source: "./bootstrap_files/chefdk_3.6.57-1_amd64.deb", destination: "$HOME/chefdk_3.6.57-1_amd64.deb"
+      sonarqube.vm.provider :virtualbox do |vb|
+        vb.customize ["modifyvm", :id, "--memory", "3072"]
+        vb.customize ["modifyvm", :id, "--cpus", "2"]
+      end
     end
   end
-
-
-  config.vm.provider :virtualbox do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "1024"]
-  end
-
 end
