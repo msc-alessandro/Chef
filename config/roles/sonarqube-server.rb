@@ -8,4 +8,4 @@ default_attributes(
   }
 )
 
-run_list "recipe[basics]", "recipe[java]", "recipe[sonarqube]", 'recipe[firewalld]', 'recipe[firewalld::sonarqube]', 'recipe[sonarqube::scanner]'
+run_list "recipe[basics]", "recipe[java]", "recipe[postgresql]","recipe[sonarqube]", 'recipe[firewalld]', 'recipe[firewalld::sonarqube]', 'recipe[sonarqube::scanner]'
