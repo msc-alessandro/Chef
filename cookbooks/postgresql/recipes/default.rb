@@ -21,16 +21,12 @@ service 'postgresql' do
 end
 
 postgresql_user 'sonar' do
-  login true
   password 'sonar'
-  host 'localhost'
-  createdb true
-  createrole true
-  superuser true
 end
 
 postgresql_database 'sonar_db' do
   owner 'sonar'
+  locale 'pt_BR.UTF-8'
 end
 
 postgresql_access 'local_sonar_user' do
@@ -40,5 +36,12 @@ postgresql_access 'local_sonar_user' do
   access_user 'sonar'
   access_addr 'localhost'
   access_method 'md5'
+end
+
+postgresql_ident 'Map Sonar DB user to Sonarqube system user' do
+  comment 'Sonarqube Mapping'
+  mapname 'sonarqube'
+  system_user 'sonarqube'
+  pg_user 'sonar'
 end
 

@@ -19,7 +19,7 @@ default['sonarqube']['embeddedDatabase']['port'] = 9092
 
 default['sonarqube']['jdbc']['username'] = 'sonar'
 default['sonarqube']['jdbc']['password'] = 'sonar'
-default['sonarqube']['jdbc']['url'] = 'jdbc:postgresql://localhost/sonar'
+default['sonarqube']['jdbc']['url'] = 'jdbc:postgresql://localhost:5432/sonar_db'
 
 default['sonarqube']['jdbc']['maxActive'] = 20
 default['sonarqube']['jdbc']['maxIdle'] = 5

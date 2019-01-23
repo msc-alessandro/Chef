@@ -9,4 +9,16 @@ Host gitlab-runner
   IdentitiesOnly yes
   LogLevel FATAL
 
+Host sonarqube-server
+  HostName 10.252.1.8
+  User root
+  Port 22
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/alessandrocb/.ssh/id_ed25519
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+
 
