@@ -55,4 +55,46 @@ runners:
       executor: 'docker'
       docker_image: 'node:10'
       retries: 1
+  - description: ed-server-cug-runner-6
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'AKYAAyJ2f6d58kyubqzm'
+      tag_list: [ 'shell', 'cug', 'runner6' ]
+      executor: 'shell'
+      retries: 1
+  - description: ed-server-runner-default-1
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'U-Z8yncsxGMNBFb7_y-D'
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-runner-default-2
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'U-Z8yncsxGMNBFb7_y-D'
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-runner-default-3
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'U-Z8yncsxGMNBFb7_y-D'
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-runner-default-4
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'U-Z8yncsxGMNBFb7_y-D'
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
+  - description: ed-server-runner-default-5
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'U-Z8yncsxGMNBFb7_y-D'
+      executor: 'docker'
+      docker_image: 'node:10'
+      retries: 1
 

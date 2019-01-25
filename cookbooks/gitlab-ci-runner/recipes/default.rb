@@ -18,7 +18,7 @@ include_recipe "#{cookbook_name}::repository"
 include_recipe "#{cookbook_name}::package"
 include_recipe "#{cookbook_name}::service"
 
-$CHAKE_ENV = ENV.fetch('CHAKE_ENV', 'local')
+$CHAKE_ENV = ENV.fetch('CHAKE_ENV', 'ed')
 
 $ROOT_DIR = File.expand_path('../../../../../.', __FILE__)
 
