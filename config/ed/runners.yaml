@@ -97,4 +97,18 @@ runners:
       executor: 'docker'
       docker_image: 'node:10'
       retries: 1
+  - description: ed-server-default-runner-6
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'U-Z8yncsxGMNBFb7_y-D'
+      tag_list: [ 'shell', 'sonar' ]
+      executor: 'shell'
+      retries: 1
+  - description: ed-server-default-runner-7
+    options:
+      url: 'https://gitlab.com'
+      registration_token: 'U-Z8yncsxGMNBFb7_y-D'
+      tag_list: [ 'shell', 'sonar' ]
+      executor: 'shell'
+      retries: 1
 
