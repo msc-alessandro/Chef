@@ -1,18 +1,18 @@
 runners:
-  - description: test-runner-1
+  - description: parasite-runner-1
     options:
-      url: 'https://gitlab.com'
-      registration_token: 'tZzvXHYxz9LqDRRN4nMv'
-      tag_list: [ 'test1', 'tag' ]
+      url: 'https://www.mrdevops-gitlab.com/'
+      registration_token: 'TxhtyPA3anBcDBDZV5Lw'
+      tag_list: [ 'parasite', 'docker', 'python' ]
       executor: 'docker'
-      docker_image: 'node:8'
+      docker_image: 'alpine:latest'
       retries: 1
-  - description: test-runner-2
+  - description: parasite-runner-2
     options:
-      url: 'https://gitlab.com'
-      registration_token: 'tZzvXHYxz9LqDRRN4nMv'
-      tag_list: [ 'test2', 'tag' ]
+      url: 'https://www.mrdevops-gitlab.com/'
+      registration_token: 'TxhtyPA3anBcDBDZV5Lw'
+      tag_list: [ 'parasite', 'docker', 'python' ]
       executor: 'docker'
-      docker_image: 'node:8'
+      docker_image: 'alpine:latest'
       retries: 1
 

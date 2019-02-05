@@ -26,7 +26,7 @@ end
 
 postgresql_database 'sonar_db' do
   owner 'sonar'
-  locale 'pt_BR.UTF-8'
+  locale 'en_US.UTF-8'
 end
 
 postgresql_access 'local_sonar_user' do
