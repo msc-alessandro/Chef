@@ -195,5 +195,43 @@ rake converge:sonarqube-server
 
 ```
 
+## Para rodar o sonar no ParasiteWatch
+
+
+Faça login na VM do sonarqube:
+
+
+```
+vagrant ssh sonarqube-server
+```
+
+
+Instale o python e o npm com typescript:
+
+```
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt install python3
+npm install --only=dev express
+npm install --only=dev typescript
+```
+
+Clone o projeto:
+
+```
+git clone https://www.mrdevops-gitlab.com/ParasiteWatch/ParasiteWatch.git
+```
+
+Entre na pasta do projeto:
+
+```
+cd ParasiteWatch/
+```
+
+Execute o sonar scanner dentro da pasta do projeto:
+
+
+```
+sonar-scanner scan
+```
 
 
