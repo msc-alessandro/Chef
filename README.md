@@ -157,3 +157,43 @@ Logo após, será necessário apenas executar o comando para convergir os ambien
 O comando para aplicar as receitas nos nós é o `converge`. Para convergir as máquinas o comando é `rake converge:<nó> CHAKE_ENV=<ambiente>`, ao rodar este comando todas as receitas ou roles aplicados ao nó que estão presentes no `nodes.yaml` são aplicados a uma máquina. O usuário pode selecionar qual máquina quer convergir passando a opção de nó no comando, como por exemplo `rake converge:gitlab-runner` ou `rake converge:desktop`, e ao rodar o comando sem a opção de nó, todas as máquinas serão convergidas, ignorando as configurações locais que possuem o prefixo `local://`. A variável `CHAKE_ENV` dita em qual ambiente o converge irá ocorrer, caso essa varável seja ignorada o `chake`  utilizará as configurações presentes em `config/local/`, caso um ambiente seja especificado, como `CHAKE_ENV=ed`, o converge irá ocorrer com as especificações dos arquivos em `config/ed/`.
 
 
+## Convergindo localmente com o Vagrant
+
+
+Após instalar o Ruby e o Chake, instale o Virtualbox e o Vagrant através do seu gerenciador de pacotes ou pelo [site](https://www.vagrantup.com/downloads.html). Após a instalação, execute o comando:
+
+```
+vagrant up
+```
+
+É necessário gerar as configurações de ssh através do comando:
+
+```
+vagrant ssh-config >> config/local/ssh_config
+```
+
+Após gerar as configurações de SSH, é necessário fazer o bootstrap da VM:
+
+```
+rake bootstrap:sonarqube-server
+```
+
+Como a instalação do Sonarqube depende da instalação de uma versão do Chef superior a que existe no gerenciador de pacotes do Debian, é necessário entrar na VM e instalar a versão mais atual, isso pode ser feito através do comando:
+
+
+```
+vagrant ssh sonarqube-server
+
+sudo dpkg -i chefdk*
+
+```
+
+Logo após só sair da VM (`Ctrl + d`) e usar o comando para fazer o converge da máquina:
+
+```
+rake converge:sonarqube-server
+
+```
+
+
+
