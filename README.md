@@ -210,7 +210,7 @@ Instale o python e o npm com typescript:
 
 ```
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt install python3
+sudo apt install python3 nodejs
 npm install --only=dev express
 npm install --only=dev typescript
 ```
